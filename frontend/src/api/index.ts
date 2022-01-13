@@ -9,6 +9,7 @@ class Api {
     const options: RequestInit = {
       method,
       headers: {
+        Accept: 'application/json',
         'Content-type': 'application/json',
         Authorization: 'Bearer ',
       },
@@ -19,8 +20,7 @@ class Api {
     }
 
     const { apiUrl } = config;
-    // const url = `${apiUrl}${endpoint}`;
-    const url = 'http://localhost/api/v1/register';
+    const url = `${apiUrl}${endpoint}`;
 
     return fetch(url, options).then((response) => {
       return response.json();

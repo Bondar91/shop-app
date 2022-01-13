@@ -1,5 +1,6 @@
 import { FormikHelpers } from 'formik';
 import { RegisterCommands } from '../../services';
+import { NotificationsDispatch } from '../../components';
 
 export const useRegisterFormFacade = () => {
   const registerCommands = new RegisterCommands();
@@ -25,8 +26,12 @@ export const useRegisterFormFacade = () => {
     return registerCommands
       .create(newUser)
       .then((response) => {
-        console.log(response);
+        console.log(response.status);
         formikHelpers.resetForm();
+        NotificationsDispatch({
+          msg: response.message,
+          variant: 'success',
+        });
       })
       .catch((error) => {
         console.log('erorr', error);
