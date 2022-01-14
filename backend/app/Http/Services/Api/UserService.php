@@ -4,6 +4,7 @@ namespace App\Http\Services\Api;
 
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RegisterRequest;
+use App\Http\Requests\Api\UpdateUserRequest;
 use App\Models\User;
 use App\Helpers\PasswordHandler;
 use Illuminate\Support\Facades\Hash;
@@ -29,6 +30,11 @@ class UserService
     public function getUserByEmail($email)
     {
         return User::query()->where('email', $email)->first();
+    }
+
+    public function update(User $user, UpdateUserRequest $request): bool
+    {
+        return $user->update($request->validated());
     }
 
     /**

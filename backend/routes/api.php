@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\AuthController;
+use App\Http\Controllers\Api\v1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function() {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
+
+    Route::group(['middleware' => ['auth:sanctum', 'can:isCustomer']],(function() {
+        Route::put('/users/{user}', [UserController::class, 'update']);
+    }));
 });
 

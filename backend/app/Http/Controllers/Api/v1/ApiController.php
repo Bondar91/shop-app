@@ -7,13 +7,19 @@ use Illuminate\Http\JsonResponse;
 
 class ApiController extends Controller
 {
-    public function responseWithSuccess($data, $message, $code): JsonResponse
+    public function responseWithSuccess($data = null, $message, $code): JsonResponse
     {
-        return response()->json([
+        $response = [
             'status' => true,
             'message' => $message,
-            'data' => $data
-        ], $code);
+        ];
+
+        if($data !== null){
+            $response['data'] = $data;
+        }
+
+        return response()->json($response, $code);
+
     }
 
     public function responseWithError($message, $code): JsonResponse

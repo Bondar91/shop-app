@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Api\v1\ApiController;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RegisterRequest;
+use App\Http\Resources\Api\UserResource;
 use App\Http\Services\Api\UserService;
 use App\Helpers\PasswordHandler;
 use Illuminate\Http\JsonResponse;
@@ -34,7 +35,7 @@ class AuthController extends ApiController
     {
         $user = $this->userService->create($request);
 
-        return $this->responseWithSuccess($user, 'User created success!', Response::HTTP_CREATED);
+        return $this->responseWithSuccess(new UserResource($user), 'User created success!', Response::HTTP_CREATED);
     }
 
     /**
