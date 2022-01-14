@@ -10,6 +10,7 @@ const Router = () => {
     <BrowserRouter>
       <Notifications />
       <Routes>
+        <Route path="/" element={<Navigate replace to="/register" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         {loggedIn ? (
