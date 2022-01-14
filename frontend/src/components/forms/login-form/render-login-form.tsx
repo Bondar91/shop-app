@@ -1,10 +1,11 @@
 import { useFormikContext, Form } from 'formik';
-import { InitialDataModel } from '../../../hooks';
-import { Input } from '../../';
+import { InitialLoginDataModel } from '../../../hooks';
+import { Input } from '../..';
 import { Button, Grid, Box, Typography, Container } from '@mui/material';
 
-export const RenderRegisterForm = () => {
-  const { values, errors, handleChange } = useFormikContext<InitialDataModel>();
+export const RenderLoginForm = () => {
+  const { values, errors, handleChange } =
+    useFormikContext<InitialLoginDataModel>();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -18,18 +19,9 @@ export const RenderRegisterForm = () => {
       >
         <Form>
           <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
-            Sign up
+            Log in
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Input
-                value={values.name}
-                id={'name'}
-                name={'name'}
-                label={'Name'}
-                fullWidth
-              />
-            </Grid>
             <Grid item xs={12}>
               <Input
                 value={values.email}
@@ -40,7 +32,7 @@ export const RenderRegisterForm = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <Input
                 value={values.password}
                 type={'password'}
@@ -50,20 +42,10 @@ export const RenderRegisterForm = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <Input
-                value={values.passwordConfirmation}
-                type={'password'}
-                id={'passwordConfirmation'}
-                name={'passwordConfirmation'}
-                label={'Password Confirmation'}
-                fullWidth
-              />
-            </Grid>
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <Button type="submit" variant="contained" fullWidth>
-              Register
+              Log in
             </Button>
           </Grid>
         </Form>

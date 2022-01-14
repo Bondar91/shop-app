@@ -7,6 +7,6 @@ export interface IRegisterRequestModel {
 
 export interface IRegisterResponseModel {
   status: boolean;
-  token: string;
+  data: IRegisterRequestModel;
   message: string;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useRegisterFormFacade } from '../../../hooks';
-import { RenderRegisterForm } from './';
+import { RenderRegisterForm } from '.';
 import { registerValidationSchema } from '../../../utils';
 
 export const RegisterForm = () => {
@@ -15,7 +15,7 @@ export const RegisterForm = () => {
         onSubmit={handleSubmitForm}
         validationSchema={registerValidationSchema}
       >
-        {({ values, handleChange }) => <RenderRegisterForm />}
+        {({ values, errors, handleChange }) => <RenderRegisterForm />}
       </Formik>
     </div>
   );

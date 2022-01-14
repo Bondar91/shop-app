@@ -1,11 +1,16 @@
 import * as yup from 'yup';
 
 export const registerValidationSchema = yup.object().shape({
-  name: yup.string().required('Imię i nazwisko jest wymagane'),
+  name: yup.string().required('Name is required'),
   email: yup
     .string()
-    .email('Niepoprawny adres Email')
-    .required('Email jest wymagany'),
-  password: yup.string().required('Hasło jest wymagane'),
-  passwordConfirmation: yup.string().required('Potwierdź hasło jest wymagane'),
+    .email('No correct email address')
+    .required('Email is required'),
+  password: yup.string().required('Password is srequired'),
+  passwordConfirmation: yup
+    .string()
+    .required('Password Confirmation is required')
+    .test('passwords-match', 'Password must match', function (value) {
+      return this.parent.password === value;
+    }),
 });

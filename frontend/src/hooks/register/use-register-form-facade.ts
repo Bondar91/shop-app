@@ -34,7 +34,11 @@ export const useRegisterFormFacade = () => {
         });
       })
       .catch((error) => {
-        console.log('erorr', error);
+        console.log(error);
+        NotificationsDispatch({
+          msg: `Coś poszło nie tak...`,
+          variant: 'error',
+        });
       });
   };
 
